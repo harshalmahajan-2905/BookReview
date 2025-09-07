@@ -185,9 +185,9 @@ A comprehensive full-stack book review platform built with modern web technologi
 4. Add tests if applicable
 5. Submit a pull request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 📄 Live Links 
+**Netlify**(Frontend)-->https://book-revieww.netlify.app/
+**Render**(Backend)-->https://bookreview-6jw4.onrender.com
 
 ## 🆘 Support
 
