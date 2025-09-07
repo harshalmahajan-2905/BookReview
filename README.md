@@ -145,6 +145,8 @@ A comprehensive full-stack book review platform built with modern web technologi
 │   └── index.css       # Global styles and Tailwind imports
 ├── public/             # Static assets
 │   └── _redirects      # Netlify SPA redirect rules
+├── images/             # Project images and screenshots
+│   └── Demo.png        # Application demo screenshot
 ├── netlify.toml        # Netlify deployment configuration
 ├── package.json        # Root dependencies and scripts
 ├── vite.config.ts      # Vite build configuration
@@ -231,7 +233,6 @@ A comprehensive full-stack book review platform built with modern web technologi
 4. Add tests if applicable
 5. Submit a pull request
 
-<<<<<<< HEAD
 ## 🌐 Live Links
 
 - **Frontend (Netlify)**: https://book-revieww.netlify.app/
@@ -239,14 +240,9 @@ A comprehensive full-stack book review platform built with modern web technologi
 
 ## 📸 Website Preview
 
-![Book Review Platform](https://via.placeholder.com/800x400/4F46E5/FFFFFF?text=Book+Review+Platform)
+![Book Review Platform](./images/Demo.png)
 
 *Screenshot of the live application showing the book browsing interface, review system, and admin dashboard.*
-=======
-## 📄 Live Links 
-**Netlify**(Frontend)-->https://book-revieww.netlify.app/
-**Render**(Backend)-->https://bookreview-6jw4.onrender.com
->>>>>>> b8128d2c8d9b5bf3539ac8bc7a82a23cf2aae3f5
 
 ## 🆘 Support
 
