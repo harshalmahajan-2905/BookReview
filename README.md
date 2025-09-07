@@ -97,15 +97,61 @@ A comprehensive full-stack book review platform built with modern web technologi
 ```
 ├── server/
 │   ├── models/          # MongoDB schemas
+│   │   ├── Book.js      # Book model with ratings and metadata
+│   │   ├── Review.js    # Review model with user-book relationship
+│   │   └── User.js      # User model with authentication
 │   ├── routes/          # API route handlers
+│   │   ├── auth.js      # Authentication endpoints (login/register)
+│   │   ├── books.js     # Book CRUD operations (admin only)
+│   │   └── reviews.js   # Review management endpoints
 │   ├── middleware/      # Authentication & validation
-│   └── index.js         # Express server setup
+│   │   └── auth.js      # JWT middleware and role-based access
+│   ├── package.json     # Server dependencies and scripts
+│   └── index.js         # Express server setup and MongoDB connection
 ├── src/
 │   ├── components/      # Reusable React components
+│   │   ├── admin/       # Admin-specific components
+│   │   │   └── BookForm.tsx
+│   │   ├── books/       # Book-related components
+│   │   │   ├── BookCard.tsx
+│   │   │   ├── ReviewForm.tsx
+│   │   │   └── ReviewList.tsx
+│   │   ├── layout/      # Layout components
+│   │   │   └── Navbar.tsx
+│   │   ├── ui/          # UI components
+│   │   │   ├── Alert.tsx
+│   │   │   ├── LoadingSpinner.tsx
+│   │   │   └── StarRating.tsx
+│   │   └── ProtectedRoute.tsx
 │   ├── pages/          # Page-level components
+│   │   ├── AdminDashboard.tsx
+│   │   ├── BookDetailPage.tsx
+│   │   ├── BookListPage.tsx
+│   │   ├── HomePage.tsx
+│   │   ├── LoginPage.tsx
+│   │   ├── MyReviewsPage.tsx
+│   │   └── RegisterPage.tsx
 │   ├── services/       # API service functions
+│   │   ├── api.ts      # Centralized API configuration
+│   │   ├── authService.ts
+│   │   ├── bookService.ts
+│   │   └── reviewService.ts
 │   ├── contexts/       # React context providers
-│   └── utils/          # Helper functions
+│   │   └── AuthContext.tsx
+│   ├── utils/          # Helper functions
+│   │   └── dateUtils.ts
+│   ├── App.tsx         # Main app component with routing
+│   ├── main.tsx        # React app entry point
+│   └── index.css       # Global styles and Tailwind imports
+├── public/             # Static assets
+│   └── _redirects      # Netlify SPA redirect rules
+├── netlify.toml        # Netlify deployment configuration
+├── package.json        # Root dependencies and scripts
+├── vite.config.ts      # Vite build configuration
+├── tailwind.config.js  # Tailwind CSS configuration
+├── tsconfig.json       # TypeScript project references
+├── tsconfig.app.json   # TypeScript app configuration
+├── eslint.config.js    # ESLint configuration
 └── README.md
 ```
 
@@ -185,9 +231,16 @@ A comprehensive full-stack book review platform built with modern web technologi
 4. Add tests if applicable
 5. Submit a pull request
 
-## 📄 License
+## 🌐 Live Links
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- **Frontend (Netlify)**: https://book-revieww.netlify.app/
+- **Backend (Render)**: https://bookreview-6jw4.onrender.com
+
+## 📸 Website Preview
+
+![Book Review Platform](https://via.placeholder.com/800x400/4F46E5/FFFFFF?text=Book+Review+Platform)
+
+*Screenshot of the live application showing the book browsing interface, review system, and admin dashboard.*
 
 ## 🆘 Support
 
