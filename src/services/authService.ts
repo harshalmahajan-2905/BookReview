@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-const API_URL = 'http://localhost:5000/api';
+import api from './api';
 
 class AuthService {
   private token: string | null = null;
@@ -8,30 +6,29 @@ class AuthService {
   constructor() {
     this.token = localStorage.getItem('token');
     if (this.token) {
-      this.setAxiosAuthHeader(this.token);
+      this.setAuthHeader(this.token);
     }
   }
 
-  private setAxiosAuthHeader(token: string) {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  private setAuthHeader(token: string) {
+    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   }
 
   setToken(token: string) {
     this.token = token;
-    this.setAxiosAuthHeader(token);
+    this.setAuthHeader(token);
+    localStorage.setItem('token', token);
   }
 
   removeToken() {
     this.token = null;
-    delete axios.defaults.headers.common['Authorization'];
+    delete api.defaults.headers.common['Authorization'];
+    localStorage.removeItem('token');
   }
 
   async login(email: string, password: string) {
     try {
-      const response = await axios.post(`${API_URL}/auth/login`, {
-        email,
-        password
-      });
+      const response = await api.post('/auth/login', { email, password });
       return response.data;
     } catch (error: any) {
       throw new Error(error.response?.data?.error || 'Login failed');
@@ -40,11 +37,11 @@ class AuthService {
 
   async register(name: string, email: string, password: string, role?: string) {
     try {
-      const response = await axios.post(`${API_URL}/auth/register`, {
+      const response = await api.post('/auth/register', {
         name,
         email,
         password,
-        role
+        role,
       });
       return response.data;
     } catch (error: any) {

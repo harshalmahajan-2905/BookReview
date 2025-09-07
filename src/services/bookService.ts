@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-const API_URL = 'http://localhost:5000/api';
+import api from './api';
 
 export interface Book {
   _id: string;
@@ -48,7 +46,7 @@ class BookService {
       params.append('page', page.toString());
       params.append('limit', limit.toString());
 
-      const response = await axios.get(`${API_URL}/books?${params}`);
+      const response = await api.get(`/books?${params}`);
       return response.data;
     } catch (error: any) {
       throw new Error(error.response?.data?.error || 'Failed to fetch books');
@@ -57,7 +55,7 @@ class BookService {
 
   async getBookById(id: string): Promise<Book> {
     try {
-      const response = await axios.get(`${API_URL}/books/${id}`);
+      const response = await api.get(`/books/${id}`);
       return response.data;
     } catch (error: any) {
       throw new Error(error.response?.data?.error || 'Failed to fetch book details');
@@ -66,7 +64,7 @@ class BookService {
 
   async addBook(bookData: Partial<Book>): Promise<Book> {
     try {
-      const response = await axios.post(`${API_URL}/books`, bookData);
+      const response = await api.post('/books', bookData);
       return response.data.book;
     } catch (error: any) {
       throw new Error(error.response?.data?.error || 'Failed to add book');
@@ -75,7 +73,7 @@ class BookService {
 
   async updateBook(id: string, bookData: Partial<Book>): Promise<Book> {
     try {
-      const response = await axios.put(`${API_URL}/books/${id}`, bookData);
+      const response = await api.put(`/books/${id}`, bookData);
       return response.data.book;
     } catch (error: any) {
       throw new Error(error.response?.data?.error || 'Failed to update book');
@@ -84,7 +82,7 @@ class BookService {
 
   async deleteBook(id: string): Promise<void> {
     try {
-      await axios.delete(`${API_URL}/books/${id}`);
+      await api.delete(`/books/${id}`);
     } catch (error: any) {
       throw new Error(error.response?.data?.error || 'Failed to delete book');
     }
